@@ -1,8 +1,8 @@
 [package]
-name = "gamer"
+name = "boomer"
 version = "0.1.0"
-authors = ["sweet"]
-edition = "2018"
+authors = ["ayes-web"]
+edition = "2020"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
