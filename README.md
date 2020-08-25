@@ -1,6 +1,7 @@
 
 # Boomer
 discord bot heavily inspired by [Innocent-bot](https://github.com/Da532/Innocent-bot).
+Prefix is "obama " by default
 
 
 ## Note
